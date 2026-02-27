@@ -1,5 +1,5 @@
 plugins {
-    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "7.2.2.6593"
 }
 
 allprojects {
