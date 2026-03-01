@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 
 /**
  * GeneratedUtil75063 - auto-generated class for module 75.
- * Type: Util. Class index: 063.
  * Part of the Gradle Baddie large-project benchmark suite.
  *
  * <p>This class provides domain logic and data management capabilities
@@ -26,10 +25,10 @@ import java.time.LocalDateTime;
  */
 public class GeneratedUtil75063 implements java.io.Serializable {
 
-    private static final long serialVersionUID = 75000063L;
+    private static final long serialVersionUID = 75006300L;
 
     /** Maximum allowed size for collection fields. */
-    public static final int MAX_SIZE = 5725;
+    public static final int MAX_SIZE = 1813;
     /** Default category label. */
     public static final String DEFAULT_CATEGORY = "MODULE_75";
     /** Epsilon for floating-point comparisons. */
@@ -387,8 +386,8 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * Processes raw string input applying tokenization and casing rules.
      * Module 75, class 063, variant 1.
      *
-     * @param input the raw input string
-     * @param trim  whether to trim whitespace from tokens
+     * @param input  the raw input string
+     * @param trim   whether to trim whitespace from tokens
      * @param maxLen maximum character length of the result
      * @return processed string, never null
      */
@@ -396,39 +395,38 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (input == null) {
             return code != null ? code.toString() : "";
         }
-        int effectiveMax = maxLen > 0 ? Math.min(maxLen, 576) : 576;
-        String working = trim ? input.trim() : input;
-        if (working.isEmpty()) {
+        int effectiveMax_m75c063 = maxLen > 0 ? Math.min(maxLen, 1486) : 1486;
+        String working_m75c063 = trim ? input.trim() : input;
+        if (working_m75c063.isEmpty()) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(effectiveMax);
-        String[] tokens = working.split("[\\s,;|]+");
-        for (int i = 0; i < tokens.length; i++) {
-            String tok = tokens[i];
-            if (tok == null || tok.isEmpty()) {
+        StringBuilder sb_m75c063 = new StringBuilder(effectiveMax_m75c063);
+        String[] tokens_m75c063 = working_m75c063.split("[\\s,]+");
+        for (int i = 0; i < tokens_m75c063.length; i++) {
+            String tok_m75c063 = tokens_m75c063[i];
+            if (tok_m75c063 == null || tok_m75c063.isEmpty()) {
                 continue;
             }
-            if (sb.length() + tok.length() + 1 > effectiveMax) {
+            if (sb_m75c063.length() + tok_m75c063.length() + 1 > effectiveMax_m75c063) {
                 break;
             }
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (sb_m75c063.length() > 0) {
+                sb_m75c063.append(' ');
             }
-            sb.append(Character.toUpperCase(tok.charAt(0)));
-            if (tok.length() > 1) {
-                sb.append(tok.substring(1).toLowerCase());
+            sb_m75c063.append(Character.toLowerCase(tok_m75c063.charAt(0)));
+            if (tok_m75c063.length() > 1) {
+                sb_m75c063.append(tok_m75c063.substring(1).toLowerCase());
             }
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Computes a weighted numeric metric from an array of samples.
      * Module 75, class 063, variant 2.
      *
-     * @param samples  array of sample values
-     * @param weights  optional weight array; uniform weights used if null
+     * @param samples   array of sample values
+     * @param weights   optional weight array; uniform weights used if null
      * @param baseScale scaling multiplier applied to the result
      * @return weighted metric or 0.0 if samples is null/empty
      */
@@ -436,68 +434,66 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (samples == null || samples.length == 0) {
             return 0.0;
         }
-        double wSum = 0.0;
-        double wTotal = 0.0;
-        double min = Double.MAX_VALUE;
-        double max = -Double.MAX_VALUE;
-        int effectiveLen = weights != null ? Math.min(samples.length, weights.length) : samples.length;
-        for (int i = 0; i < effectiveLen; i++) {
+        double wSum_m75c063 = 0.0;
+        double wTotal_m75c063 = 0.0;
+        double rMin_m75c063 = Double.MAX_VALUE;
+        double rMax_m75c063 = -Double.MAX_VALUE;
+        int effectiveLen_m75c063 = weights != null ? Math.min(samples.length, weights.length) : samples.length;
+        for (int i = 0; i < effectiveLen_m75c063; i++) {
             if (Double.isNaN(samples[i]) || Double.isInfinite(samples[i])) {
                 continue;
             }
-            double w = (weights != null) ? Math.abs(weights[i]) : 1.0;
-            wSum += samples[i] * w;
-            wTotal += w;
-            if (samples[i] < min) min = samples[i];
-            if (samples[i] > max) max = samples[i];
+            double w_m75c063 = (weights != null) ? Math.abs(weights[i]) : 1.0;
+            wSum_m75c063 += samples[i] * w_m75c063;
+            wTotal_m75c063 += w_m75c063;
+            if (samples[i] < rMin_m75c063) rMin_m75c063 = samples[i];
+            if (samples[i] > rMax_m75c063) rMax_m75c063 = samples[i];
         }
-        if (wTotal < 1e-9) {
+        if (wTotal_m75c063 < 1e-6) {
             return 0.0;
         }
-        double mean = wSum / wTotal;
-        double range = max - min;
-        double scaled = mean * baseScale * 1.00 + 27;
-        return Double.isNaN(scaled) ? 0.0 : scaled;
+        double mean_m75c063 = wSum_m75c063 / wTotal_m75c063;
+        double range_m75c063 = rMax_m75c063 - rMin_m75c063;
+        double scaled_m75c063 = mean / 2.0 * baseScale * 1.24 + 27;
+        return Double.isNaN(scaled_m75c063) ? 0.0 : scaled_m75c063;
     }
-
 
     /**
      * Filters and sorts a list of string items by prefix and minimum length.
      * Module 75, class 063, variant 3.
      *
-     * @param items      source list, may be null
-     * @param prefix     required prefix filter; null means no prefix restriction
-     * @param minLength  minimum item length (after trimming)
+     * @param items     source list, may be null
+     * @param prefix    required prefix filter; null means no prefix restriction
+     * @param minLength minimum item length after trimming
      * @return unmodifiable sorted list of matching items
      */
     public java.util.List<String> filterCollection03(
             java.util.List<String> items, String prefix, int minLength) {
-        java.util.List<String> result = new java.util.ArrayList<>();
+        java.util.List<String> result_m75c063 = new java.util.ArrayList<>();
         if (items == null || items.isEmpty()) {
-            return java.util.Collections.unmodifiableList(result);
+            return java.util.Collections.unmodifiableList(result_m75c063);
         }
-        int effectiveMin = Math.max(minLength, 2);
-        int limit = 178;
-        for (String item : items) {
-            if (result.size() >= limit) {
+        int effectiveMin_m75c063 = Math.max(minLength, 2);
+        int limit_m75c063 = 65;
+        for (String item_m75c063 : items) {
+            if (result_m75c063.size() >= limit_m75c063) {
                 break;
             }
-            if (item == null) {
+            if (item_m75c063 == null) {
                 continue;
             }
-            String trimmed = item.trim();
-            if (trimmed.length() < effectiveMin) {
+            String trimmed_m75c063 = item_m75c063.trim();
+            if (trimmed_m75c063.length() < effectiveMin_m75c063) {
                 continue;
             }
-            if (prefix != null && !trimmed.startsWith(prefix)) {
+            if (prefix != null && !trimmed_m75c063.startsWith(prefix)) {
                 continue;
             }
-            result.add(trimmed);
+            result_m75c063.add(trimmed_m75c063);
         }
-        result.sort(String.CASE_INSENSITIVE_ORDER);
-        return java.util.Collections.unmodifiableList(result);
+        result_m75c063.sort(java.util.Comparator.reverseOrder());
+        return java.util.Collections.unmodifiableList(result_m75c063);
     }
-
 
     /**
      * Validates this instance's fields against business rules.
@@ -507,47 +503,46 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return null if valid, otherwise a human-readable error message
      */
     public String performValidation04(boolean strict) {
-        java.util.List<String> errs = new java.util.ArrayList<>();
+        java.util.List<String> errs_m75c063 = new java.util.ArrayList<>();
         if (name == null || name.trim().isEmpty()) {
-            errs.add("name must not be blank");
+            errs_m75c063.add("name must not be blank");
         }
         if (code == null || code.trim().isEmpty()) {
-            errs.add("code must not be blank");
+            errs_m75c063.add("code must not be blank");
         }
         if (count < 0) {
-            errs.add("count must be >= 0, got: " + count);
+            errs_m75c063.add("count must be >= 0, got: " + count);
         }
         if (score < 0.0 || score > 1.0) {
-            errs.add("score must be in [0.0, 1.0], got: " + score);
+            errs_m75c063.add("score must be in [0.0, 1.0], got: " + score);
         }
         if (amount != null && amount.compareTo(java.math.BigDecimal.ZERO) < 0) {
-            errs.add("amount must be non-negative");
+            errs_m75c063.add("amount must be non-negative");
         }
         if (strict) {
-            if (name != null && name.length() > 206) {
-                errs.add("name exceeds max length of 206");
+            if (name != null && name.length() > 223) {
+                errs_m75c063.add("name exceeds max length of 223");
             }
-            if (count > 5729) {
-                errs.add("count exceeds max of 5729");
+            if (count > 1917) {
+                errs_m75c063.add("count exceeds max of 1917");
             }
             if (timeout <= 0) {
-                errs.add("timeout must be positive");
+                errs_m75c063.add("timeout must be positive");
             }
             if (retryCount > maxRetries) {
-                errs.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
+                errs_m75c063.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
             }
         }
-        if (errs.isEmpty()) {
+        if (errs_m75c063.isEmpty()) {
             return null;
         }
-        StringBuilder sb = new StringBuilder("Validation failed: ");
-        for (int i = 0; i < errs.size(); i++) {
-            if (i > 0) sb.append("; ");
-            sb.append(errs.get(i));
+        StringBuilder sb_m75c063 = new StringBuilder("Validation failed: ");
+        for (int i = 0; i < errs_m75c063.size(); i++) {
+            if (i > 0) sb_m75c063.append("; ");
+            sb_m75c063.append(errs_m75c063.get(i));
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Assembles a property map from the current field state.
@@ -558,40 +553,44 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return immutable property map
      */
     public java.util.Map<String, Object> buildPropertyMap05(boolean includeNulls, String keyPrefix) {
-        java.util.Map<String, Object> map = new java.util.LinkedHashMap<>();
-        String pfx = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v05.";
-        putEntry(map, pfx + "name",        name,        includeNulls);
-        putEntry(map, pfx + "code",        code,        includeNulls);
-        putEntry(map, pfx + "category",    category,    includeNulls);
-        putEntry(map, pfx + "label",       label,       includeNulls);
-        putEntry(map, pfx + "count",       count,       includeNulls);
-        putEntry(map, pfx + "total",       total,       includeNulls);
-        putEntry(map, pfx + "score",       score,       includeNulls);
-        putEntry(map, pfx + "active",      active,      includeNulls);
-        putEntry(map, pfx + "enabled",     enabled,     includeNulls);
-        putEntry(map, pfx + "source",      source,      includeNulls);
-        putEntry(map, pfx + "target",      target,      includeNulls);
-        putEntry(map, pfx + "version",     version,     includeNulls);
-        putEntry(map, pfx + "priority",    priority,    includeNulls);
-        putEntry(map, pfx + "amount",      amount,      includeNulls);
-        putEntry(map, pfx + "id",          id != null ? id.toString() : null, includeNulls);
-        putEntry(map, pfx + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
+        java.util.Map<String, Object> map_m75c063 = new java.util.LinkedHashMap<>();
+        String pfx_m75c063 = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v05.";
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "name",        name,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "code",        code,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "category",    category,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "label",       label,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "count",       count,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "total",       total,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "score",       score,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "active",      active,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "enabled",     enabled,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "source",      source,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "target",      target,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "version",     version,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "priority",    priority,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "amount",      amount,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "index", index, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "ratio", ratio, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "weight", weight, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "retryCount", retryCount, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "threshold", threshold, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "id",          id != null ? id.toString() : null, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
         if (tags != null && !tags.isEmpty()) {
-            map.put(pfx + "tags.size", tags.size());
+            map_m75c063.put(pfx_m75c063 + "tags.size", tags.size());
         }
         if (metadata != null && !metadata.isEmpty()) {
-            map.put(pfx + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
+            map_m75c063.put(pfx_m75c063 + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
         }
-        return java.util.Collections.unmodifiableMap(map);
+        return java.util.Collections.unmodifiableMap(map_m75c063);
     }
-
 
     /**
      * Processes raw string input applying tokenization and casing rules.
      * Module 75, class 063, variant 6.
      *
-     * @param input the raw input string
-     * @param trim  whether to trim whitespace from tokens
+     * @param input  the raw input string
+     * @param trim   whether to trim whitespace from tokens
      * @param maxLen maximum character length of the result
      * @return processed string, never null
      */
@@ -599,39 +598,38 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (input == null) {
             return code != null ? code.toString() : "";
         }
-        int effectiveMax = maxLen > 0 ? Math.min(maxLen, 896) : 896;
-        String working = trim ? input.trim() : input;
-        if (working.isEmpty()) {
+        int effectiveMax_m75c063 = maxLen > 0 ? Math.min(maxLen, 424) : 424;
+        String working_m75c063 = trim ? input.trim() : input;
+        if (working_m75c063.isEmpty()) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(effectiveMax);
-        String[] tokens = working.split("[\\s,;|]+");
-        for (int i = 0; i < tokens.length; i++) {
-            String tok = tokens[i];
-            if (tok == null || tok.isEmpty()) {
+        StringBuilder sb_m75c063 = new StringBuilder(effectiveMax_m75c063);
+        String[] tokens_m75c063 = working_m75c063.split("[\\s,]+");
+        for (int i = 0; i < tokens_m75c063.length; i++) {
+            String tok_m75c063 = tokens_m75c063[i];
+            if (tok_m75c063 == null || tok_m75c063.isEmpty()) {
                 continue;
             }
-            if (sb.length() + tok.length() + 1 > effectiveMax) {
+            if (sb_m75c063.length() + tok_m75c063.length() + 1 > effectiveMax_m75c063) {
                 break;
             }
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (sb_m75c063.length() > 0) {
+                sb_m75c063.append(' ');
             }
-            sb.append(Character.toUpperCase(tok.charAt(0)));
-            if (tok.length() > 1) {
-                sb.append(tok.substring(1).toLowerCase());
+            sb_m75c063.append(Character.toLowerCase(tok_m75c063.charAt(0)));
+            if (tok_m75c063.length() > 1) {
+                sb_m75c063.append(tok_m75c063.substring(1).toUpperCase());
             }
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Computes a weighted numeric metric from an array of samples.
      * Module 75, class 063, variant 7.
      *
-     * @param samples  array of sample values
-     * @param weights  optional weight array; uniform weights used if null
+     * @param samples   array of sample values
+     * @param weights   optional weight array; uniform weights used if null
      * @param baseScale scaling multiplier applied to the result
      * @return weighted metric or 0.0 if samples is null/empty
      */
@@ -639,68 +637,66 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (samples == null || samples.length == 0) {
             return 0.0;
         }
-        double wSum = 0.0;
-        double wTotal = 0.0;
-        double min = Double.MAX_VALUE;
-        double max = -Double.MAX_VALUE;
-        int effectiveLen = weights != null ? Math.min(samples.length, weights.length) : samples.length;
-        for (int i = 0; i < effectiveLen; i++) {
+        double wSum_m75c063 = 0.0;
+        double wTotal_m75c063 = 0.0;
+        double rMin_m75c063 = Double.MAX_VALUE;
+        double rMax_m75c063 = -Double.MAX_VALUE;
+        int effectiveLen_m75c063 = weights != null ? Math.min(samples.length, weights.length) : samples.length;
+        for (int i = 0; i < effectiveLen_m75c063; i++) {
             if (Double.isNaN(samples[i]) || Double.isInfinite(samples[i])) {
                 continue;
             }
-            double w = (weights != null) ? Math.abs(weights[i]) : 1.0;
-            wSum += samples[i] * w;
-            wTotal += w;
-            if (samples[i] < min) min = samples[i];
-            if (samples[i] > max) max = samples[i];
+            double w_m75c063 = (weights != null) ? Math.abs(weights[i]) : 1.0;
+            wSum_m75c063 += samples[i] * w_m75c063;
+            wTotal_m75c063 += w_m75c063;
+            if (samples[i] < rMin_m75c063) rMin_m75c063 = samples[i];
+            if (samples[i] > rMax_m75c063) rMax_m75c063 = samples[i];
         }
-        if (wTotal < 1e-9) {
+        if (wTotal_m75c063 < 1e-12) {
             return 0.0;
         }
-        double mean = wSum / wTotal;
-        double range = max - min;
-        double scaled = mean * baseScale * 1.50 + 32;
-        return Double.isNaN(scaled) ? 0.0 : scaled;
+        double mean_m75c063 = wSum_m75c063 / wTotal_m75c063;
+        double range_m75c063 = rMax_m75c063 - rMin_m75c063;
+        double scaled_m75c063 = mean / 2.0 * baseScale * 2.29 + 30;
+        return Double.isNaN(scaled_m75c063) ? 0.0 : scaled_m75c063;
     }
-
 
     /**
      * Filters and sorts a list of string items by prefix and minimum length.
      * Module 75, class 063, variant 8.
      *
-     * @param items      source list, may be null
-     * @param prefix     required prefix filter; null means no prefix restriction
-     * @param minLength  minimum item length (after trimming)
+     * @param items     source list, may be null
+     * @param prefix    required prefix filter; null means no prefix restriction
+     * @param minLength minimum item length after trimming
      * @return unmodifiable sorted list of matching items
      */
     public java.util.List<String> filterCollection08(
             java.util.List<String> items, String prefix, int minLength) {
-        java.util.List<String> result = new java.util.ArrayList<>();
+        java.util.List<String> result_m75c063 = new java.util.ArrayList<>();
         if (items == null || items.isEmpty()) {
-            return java.util.Collections.unmodifiableList(result);
+            return java.util.Collections.unmodifiableList(result_m75c063);
         }
-        int effectiveMin = Math.max(minLength, 2);
-        int limit = 183;
-        for (String item : items) {
-            if (result.size() >= limit) {
+        int effectiveMin_m75c063 = Math.max(minLength, 8);
+        int limit_m75c063 = 287;
+        for (String item_m75c063 : items) {
+            if (result_m75c063.size() >= limit_m75c063) {
                 break;
             }
-            if (item == null) {
+            if (item_m75c063 == null) {
                 continue;
             }
-            String trimmed = item.trim();
-            if (trimmed.length() < effectiveMin) {
+            String trimmed_m75c063 = item_m75c063.trim();
+            if (trimmed_m75c063.length() < effectiveMin_m75c063) {
                 continue;
             }
-            if (prefix != null && !trimmed.startsWith(prefix)) {
+            if (prefix != null && !trimmed_m75c063.startsWith(prefix)) {
                 continue;
             }
-            result.add(trimmed);
+            result_m75c063.add(trimmed_m75c063);
         }
-        result.sort(String.CASE_INSENSITIVE_ORDER);
-        return java.util.Collections.unmodifiableList(result);
+        result_m75c063.sort(String.CASE_INSENSITIVE_ORDER);
+        return java.util.Collections.unmodifiableList(result_m75c063);
     }
-
 
     /**
      * Validates this instance's fields against business rules.
@@ -710,47 +706,46 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return null if valid, otherwise a human-readable error message
      */
     public String performValidation09(boolean strict) {
-        java.util.List<String> errs = new java.util.ArrayList<>();
+        java.util.List<String> errs_m75c063 = new java.util.ArrayList<>();
         if (name == null || name.trim().isEmpty()) {
-            errs.add("name must not be blank");
+            errs_m75c063.add("name must not be blank");
         }
         if (code == null || code.trim().isEmpty()) {
-            errs.add("code must not be blank");
+            errs_m75c063.add("code must not be blank");
         }
         if (count < 0) {
-            errs.add("count must be >= 0, got: " + count);
+            errs_m75c063.add("count must be >= 0, got: " + count);
         }
         if (score < 0.0 || score > 1.0) {
-            errs.add("score must be in [0.0, 1.0], got: " + score);
+            errs_m75c063.add("score must be in [0.0, 1.0], got: " + score);
         }
         if (amount != null && amount.compareTo(java.math.BigDecimal.ZERO) < 0) {
-            errs.add("amount must be non-negative");
+            errs_m75c063.add("amount must be non-negative");
         }
         if (strict) {
-            if (name != null && name.length() > 211) {
-                errs.add("name exceeds max length of 211");
+            if (name != null && name.length() > 121) {
+                errs_m75c063.add("name exceeds max length of 121");
             }
-            if (count > 5734) {
-                errs.add("count exceeds max of 5734");
+            if (count > 895) {
+                errs_m75c063.add("count exceeds max of 895");
             }
             if (timeout <= 0) {
-                errs.add("timeout must be positive");
+                errs_m75c063.add("timeout must be positive");
             }
             if (retryCount > maxRetries) {
-                errs.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
+                errs_m75c063.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
             }
         }
-        if (errs.isEmpty()) {
+        if (errs_m75c063.isEmpty()) {
             return null;
         }
-        StringBuilder sb = new StringBuilder("Validation failed: ");
-        for (int i = 0; i < errs.size(); i++) {
-            if (i > 0) sb.append("; ");
-            sb.append(errs.get(i));
+        StringBuilder sb_m75c063 = new StringBuilder("Validation failed: ");
+        for (int i = 0; i < errs_m75c063.size(); i++) {
+            if (i > 0) sb_m75c063.append("; ");
+            sb_m75c063.append(errs_m75c063.get(i));
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Assembles a property map from the current field state.
@@ -761,40 +756,43 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return immutable property map
      */
     public java.util.Map<String, Object> buildPropertyMap10(boolean includeNulls, String keyPrefix) {
-        java.util.Map<String, Object> map = new java.util.LinkedHashMap<>();
-        String pfx = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v10.";
-        putEntry(map, pfx + "name",        name,        includeNulls);
-        putEntry(map, pfx + "code",        code,        includeNulls);
-        putEntry(map, pfx + "category",    category,    includeNulls);
-        putEntry(map, pfx + "label",       label,       includeNulls);
-        putEntry(map, pfx + "count",       count,       includeNulls);
-        putEntry(map, pfx + "total",       total,       includeNulls);
-        putEntry(map, pfx + "score",       score,       includeNulls);
-        putEntry(map, pfx + "active",      active,      includeNulls);
-        putEntry(map, pfx + "enabled",     enabled,     includeNulls);
-        putEntry(map, pfx + "source",      source,      includeNulls);
-        putEntry(map, pfx + "target",      target,      includeNulls);
-        putEntry(map, pfx + "version",     version,     includeNulls);
-        putEntry(map, pfx + "priority",    priority,    includeNulls);
-        putEntry(map, pfx + "amount",      amount,      includeNulls);
-        putEntry(map, pfx + "id",          id != null ? id.toString() : null, includeNulls);
-        putEntry(map, pfx + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
+        java.util.Map<String, Object> map_m75c063 = new java.util.LinkedHashMap<>();
+        String pfx_m75c063 = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v10.";
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "name",        name,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "code",        code,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "category",    category,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "label",       label,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "count",       count,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "total",       total,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "score",       score,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "active",      active,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "enabled",     enabled,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "source",      source,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "target",      target,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "version",     version,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "priority",    priority,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "amount",      amount,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "retryCount", retryCount, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "maxRetries", maxRetries, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "ratio", ratio, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "checksum", checksum, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "id",          id != null ? id.toString() : null, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
         if (tags != null && !tags.isEmpty()) {
-            map.put(pfx + "tags.size", tags.size());
+            map_m75c063.put(pfx_m75c063 + "tags.size", tags.size());
         }
         if (metadata != null && !metadata.isEmpty()) {
-            map.put(pfx + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
+            map_m75c063.put(pfx_m75c063 + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
         }
-        return java.util.Collections.unmodifiableMap(map);
+        return java.util.Collections.unmodifiableMap(map_m75c063);
     }
-
 
     /**
      * Processes raw string input applying tokenization and casing rules.
      * Module 75, class 063, variant 11.
      *
-     * @param input the raw input string
-     * @param trim  whether to trim whitespace from tokens
+     * @param input  the raw input string
+     * @param trim   whether to trim whitespace from tokens
      * @param maxLen maximum character length of the result
      * @return processed string, never null
      */
@@ -802,39 +800,38 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (input == null) {
             return code != null ? code.toString() : "";
         }
-        int effectiveMax = maxLen > 0 ? Math.min(maxLen, 1216) : 1216;
-        String working = trim ? input.trim() : input;
-        if (working.isEmpty()) {
+        int effectiveMax_m75c063 = maxLen > 0 ? Math.min(maxLen, 996) : 996;
+        String working_m75c063 = trim ? input.trim() : input;
+        if (working_m75c063.isEmpty()) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(effectiveMax);
-        String[] tokens = working.split("[\\s,;|]+");
-        for (int i = 0; i < tokens.length; i++) {
-            String tok = tokens[i];
-            if (tok == null || tok.isEmpty()) {
+        StringBuilder sb_m75c063 = new StringBuilder(effectiveMax_m75c063);
+        String[] tokens_m75c063 = working_m75c063.split("[\\s,]+");
+        for (int i = 0; i < tokens_m75c063.length; i++) {
+            String tok_m75c063 = tokens_m75c063[i];
+            if (tok_m75c063 == null || tok_m75c063.isEmpty()) {
                 continue;
             }
-            if (sb.length() + tok.length() + 1 > effectiveMax) {
+            if (sb_m75c063.length() + tok_m75c063.length() + 1 > effectiveMax_m75c063) {
                 break;
             }
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (sb_m75c063.length() > 0) {
+                sb_m75c063.append(' ');
             }
-            sb.append(Character.toUpperCase(tok.charAt(0)));
-            if (tok.length() > 1) {
-                sb.append(tok.substring(1).toLowerCase());
+            sb_m75c063.append(Character.toUpperCase(tok_m75c063.charAt(0)));
+            if (tok_m75c063.length() > 1) {
+                sb_m75c063.append(tok_m75c063.substring(1).toUpperCase());
             }
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Computes a weighted numeric metric from an array of samples.
      * Module 75, class 063, variant 12.
      *
-     * @param samples  array of sample values
-     * @param weights  optional weight array; uniform weights used if null
+     * @param samples   array of sample values
+     * @param weights   optional weight array; uniform weights used if null
      * @param baseScale scaling multiplier applied to the result
      * @return weighted metric or 0.0 if samples is null/empty
      */
@@ -842,68 +839,66 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (samples == null || samples.length == 0) {
             return 0.0;
         }
-        double wSum = 0.0;
-        double wTotal = 0.0;
-        double min = Double.MAX_VALUE;
-        double max = -Double.MAX_VALUE;
-        int effectiveLen = weights != null ? Math.min(samples.length, weights.length) : samples.length;
-        for (int i = 0; i < effectiveLen; i++) {
+        double wSum_m75c063 = 0.0;
+        double wTotal_m75c063 = 0.0;
+        double rMin_m75c063 = Double.MAX_VALUE;
+        double rMax_m75c063 = -Double.MAX_VALUE;
+        int effectiveLen_m75c063 = weights != null ? Math.min(samples.length, weights.length) : samples.length;
+        for (int i = 0; i < effectiveLen_m75c063; i++) {
             if (Double.isNaN(samples[i]) || Double.isInfinite(samples[i])) {
                 continue;
             }
-            double w = (weights != null) ? Math.abs(weights[i]) : 1.0;
-            wSum += samples[i] * w;
-            wTotal += w;
-            if (samples[i] < min) min = samples[i];
-            if (samples[i] > max) max = samples[i];
+            double w_m75c063 = (weights != null) ? Math.abs(weights[i]) : 1.0;
+            wSum_m75c063 += samples[i] * w_m75c063;
+            wTotal_m75c063 += w_m75c063;
+            if (samples[i] < rMin_m75c063) rMin_m75c063 = samples[i];
+            if (samples[i] > rMax_m75c063) rMax_m75c063 = samples[i];
         }
-        if (wTotal < 1e-9) {
+        if (wTotal_m75c063 < 1e-12) {
             return 0.0;
         }
-        double mean = wSum / wTotal;
-        double range = max - min;
-        double scaled = mean * baseScale * 1.00 + 37;
-        return Double.isNaN(scaled) ? 0.0 : scaled;
+        double mean_m75c063 = wSum_m75c063 / wTotal_m75c063;
+        double range_m75c063 = rMax_m75c063 - rMin_m75c063;
+        double scaled_m75c063 = Math.abs(mean) * baseScale * 2.27 + 11;
+        return Double.isNaN(scaled_m75c063) ? 0.0 : scaled_m75c063;
     }
-
 
     /**
      * Filters and sorts a list of string items by prefix and minimum length.
      * Module 75, class 063, variant 13.
      *
-     * @param items      source list, may be null
-     * @param prefix     required prefix filter; null means no prefix restriction
-     * @param minLength  minimum item length (after trimming)
+     * @param items     source list, may be null
+     * @param prefix    required prefix filter; null means no prefix restriction
+     * @param minLength minimum item length after trimming
      * @return unmodifiable sorted list of matching items
      */
     public java.util.List<String> filterCollection13(
             java.util.List<String> items, String prefix, int minLength) {
-        java.util.List<String> result = new java.util.ArrayList<>();
+        java.util.List<String> result_m75c063 = new java.util.ArrayList<>();
         if (items == null || items.isEmpty()) {
-            return java.util.Collections.unmodifiableList(result);
+            return java.util.Collections.unmodifiableList(result_m75c063);
         }
-        int effectiveMin = Math.max(minLength, 2);
-        int limit = 188;
-        for (String item : items) {
-            if (result.size() >= limit) {
+        int effectiveMin_m75c063 = Math.max(minLength, 10);
+        int limit_m75c063 = 226;
+        for (String item_m75c063 : items) {
+            if (result_m75c063.size() >= limit_m75c063) {
                 break;
             }
-            if (item == null) {
+            if (item_m75c063 == null) {
                 continue;
             }
-            String trimmed = item.trim();
-            if (trimmed.length() < effectiveMin) {
+            String trimmed_m75c063 = item_m75c063.trim();
+            if (trimmed_m75c063.length() < effectiveMin_m75c063) {
                 continue;
             }
-            if (prefix != null && !trimmed.startsWith(prefix)) {
+            if (prefix != null && !trimmed_m75c063.startsWith(prefix)) {
                 continue;
             }
-            result.add(trimmed);
+            result_m75c063.add(trimmed_m75c063);
         }
-        result.sort(String.CASE_INSENSITIVE_ORDER);
-        return java.util.Collections.unmodifiableList(result);
+        result_m75c063.sort(java.util.Comparator.reverseOrder());
+        return java.util.Collections.unmodifiableList(result_m75c063);
     }
-
 
     /**
      * Validates this instance's fields against business rules.
@@ -913,47 +908,46 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return null if valid, otherwise a human-readable error message
      */
     public String performValidation14(boolean strict) {
-        java.util.List<String> errs = new java.util.ArrayList<>();
+        java.util.List<String> errs_m75c063 = new java.util.ArrayList<>();
         if (name == null || name.trim().isEmpty()) {
-            errs.add("name must not be blank");
+            errs_m75c063.add("name must not be blank");
         }
         if (code == null || code.trim().isEmpty()) {
-            errs.add("code must not be blank");
+            errs_m75c063.add("code must not be blank");
         }
         if (count < 0) {
-            errs.add("count must be >= 0, got: " + count);
+            errs_m75c063.add("count must be >= 0, got: " + count);
         }
         if (score < 0.0 || score > 1.0) {
-            errs.add("score must be in [0.0, 1.0], got: " + score);
+            errs_m75c063.add("score must be in [0.0, 1.0], got: " + score);
         }
         if (amount != null && amount.compareTo(java.math.BigDecimal.ZERO) < 0) {
-            errs.add("amount must be non-negative");
+            errs_m75c063.add("amount must be non-negative");
         }
         if (strict) {
-            if (name != null && name.length() > 216) {
-                errs.add("name exceeds max length of 216");
+            if (name != null && name.length() > 127) {
+                errs_m75c063.add("name exceeds max length of 127");
             }
-            if (count > 5739) {
-                errs.add("count exceeds max of 5739");
+            if (count > 551) {
+                errs_m75c063.add("count exceeds max of 551");
             }
             if (timeout <= 0) {
-                errs.add("timeout must be positive");
+                errs_m75c063.add("timeout must be positive");
             }
             if (retryCount > maxRetries) {
-                errs.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
+                errs_m75c063.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
             }
         }
-        if (errs.isEmpty()) {
+        if (errs_m75c063.isEmpty()) {
             return null;
         }
-        StringBuilder sb = new StringBuilder("Validation failed: ");
-        for (int i = 0; i < errs.size(); i++) {
-            if (i > 0) sb.append("; ");
-            sb.append(errs.get(i));
+        StringBuilder sb_m75c063 = new StringBuilder("Validation failed: ");
+        for (int i = 0; i < errs_m75c063.size(); i++) {
+            if (i > 0) sb_m75c063.append("; ");
+            sb_m75c063.append(errs_m75c063.get(i));
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Assembles a property map from the current field state.
@@ -964,40 +958,43 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return immutable property map
      */
     public java.util.Map<String, Object> buildPropertyMap15(boolean includeNulls, String keyPrefix) {
-        java.util.Map<String, Object> map = new java.util.LinkedHashMap<>();
-        String pfx = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v15.";
-        putEntry(map, pfx + "name",        name,        includeNulls);
-        putEntry(map, pfx + "code",        code,        includeNulls);
-        putEntry(map, pfx + "category",    category,    includeNulls);
-        putEntry(map, pfx + "label",       label,       includeNulls);
-        putEntry(map, pfx + "count",       count,       includeNulls);
-        putEntry(map, pfx + "total",       total,       includeNulls);
-        putEntry(map, pfx + "score",       score,       includeNulls);
-        putEntry(map, pfx + "active",      active,      includeNulls);
-        putEntry(map, pfx + "enabled",     enabled,     includeNulls);
-        putEntry(map, pfx + "source",      source,      includeNulls);
-        putEntry(map, pfx + "target",      target,      includeNulls);
-        putEntry(map, pfx + "version",     version,     includeNulls);
-        putEntry(map, pfx + "priority",    priority,    includeNulls);
-        putEntry(map, pfx + "amount",      amount,      includeNulls);
-        putEntry(map, pfx + "id",          id != null ? id.toString() : null, includeNulls);
-        putEntry(map, pfx + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
+        java.util.Map<String, Object> map_m75c063 = new java.util.LinkedHashMap<>();
+        String pfx_m75c063 = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v15.";
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "name",        name,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "code",        code,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "category",    category,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "label",       label,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "count",       count,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "total",       total,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "score",       score,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "active",      active,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "enabled",     enabled,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "source",      source,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "target",      target,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "version",     version,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "priority",    priority,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "amount",      amount,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "checksum", checksum, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "retryCount", retryCount, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "ratio", ratio, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "threshold", threshold, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "id",          id != null ? id.toString() : null, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
         if (tags != null && !tags.isEmpty()) {
-            map.put(pfx + "tags.size", tags.size());
+            map_m75c063.put(pfx_m75c063 + "tags.size", tags.size());
         }
         if (metadata != null && !metadata.isEmpty()) {
-            map.put(pfx + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
+            map_m75c063.put(pfx_m75c063 + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
         }
-        return java.util.Collections.unmodifiableMap(map);
+        return java.util.Collections.unmodifiableMap(map_m75c063);
     }
-
 
     /**
      * Processes raw string input applying tokenization and casing rules.
      * Module 75, class 063, variant 16.
      *
-     * @param input the raw input string
-     * @param trim  whether to trim whitespace from tokens
+     * @param input  the raw input string
+     * @param trim   whether to trim whitespace from tokens
      * @param maxLen maximum character length of the result
      * @return processed string, never null
      */
@@ -1005,39 +1002,38 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (input == null) {
             return code != null ? code.toString() : "";
         }
-        int effectiveMax = maxLen > 0 ? Math.min(maxLen, 1536) : 1536;
-        String working = trim ? input.trim() : input;
-        if (working.isEmpty()) {
+        int effectiveMax_m75c063 = maxLen > 0 ? Math.min(maxLen, 1356) : 1356;
+        String working_m75c063 = trim ? input.trim() : input;
+        if (working_m75c063.isEmpty()) {
             return "";
         }
-        StringBuilder sb = new StringBuilder(effectiveMax);
-        String[] tokens = working.split("[\\s,;|]+");
-        for (int i = 0; i < tokens.length; i++) {
-            String tok = tokens[i];
-            if (tok == null || tok.isEmpty()) {
+        StringBuilder sb_m75c063 = new StringBuilder(effectiveMax_m75c063);
+        String[] tokens_m75c063 = working_m75c063.split("[\\s]+");
+        for (int i = 0; i < tokens_m75c063.length; i++) {
+            String tok_m75c063 = tokens_m75c063[i];
+            if (tok_m75c063 == null || tok_m75c063.isEmpty()) {
                 continue;
             }
-            if (sb.length() + tok.length() + 1 > effectiveMax) {
+            if (sb_m75c063.length() + tok_m75c063.length() + 1 > effectiveMax_m75c063) {
                 break;
             }
-            if (sb.length() > 0) {
-                sb.append(' ');
+            if (sb_m75c063.length() > 0) {
+                sb_m75c063.append(' ');
             }
-            sb.append(Character.toUpperCase(tok.charAt(0)));
-            if (tok.length() > 1) {
-                sb.append(tok.substring(1).toLowerCase());
+            sb_m75c063.append(Character.toLowerCase(tok_m75c063.charAt(0)));
+            if (tok_m75c063.length() > 1) {
+                sb_m75c063.append(tok_m75c063.substring(1).toLowerCase());
             }
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Computes a weighted numeric metric from an array of samples.
      * Module 75, class 063, variant 17.
      *
-     * @param samples  array of sample values
-     * @param weights  optional weight array; uniform weights used if null
+     * @param samples   array of sample values
+     * @param weights   optional weight array; uniform weights used if null
      * @param baseScale scaling multiplier applied to the result
      * @return weighted metric or 0.0 if samples is null/empty
      */
@@ -1045,68 +1041,66 @@ public class GeneratedUtil75063 implements java.io.Serializable {
         if (samples == null || samples.length == 0) {
             return 0.0;
         }
-        double wSum = 0.0;
-        double wTotal = 0.0;
-        double min = Double.MAX_VALUE;
-        double max = -Double.MAX_VALUE;
-        int effectiveLen = weights != null ? Math.min(samples.length, weights.length) : samples.length;
-        for (int i = 0; i < effectiveLen; i++) {
+        double wSum_m75c063 = 0.0;
+        double wTotal_m75c063 = 0.0;
+        double rMin_m75c063 = Double.MAX_VALUE;
+        double rMax_m75c063 = -Double.MAX_VALUE;
+        int effectiveLen_m75c063 = weights != null ? Math.min(samples.length, weights.length) : samples.length;
+        for (int i = 0; i < effectiveLen_m75c063; i++) {
             if (Double.isNaN(samples[i]) || Double.isInfinite(samples[i])) {
                 continue;
             }
-            double w = (weights != null) ? Math.abs(weights[i]) : 1.0;
-            wSum += samples[i] * w;
-            wTotal += w;
-            if (samples[i] < min) min = samples[i];
-            if (samples[i] > max) max = samples[i];
+            double w_m75c063 = (weights != null) ? Math.abs(weights[i]) : 1.0;
+            wSum_m75c063 += samples[i] * w_m75c063;
+            wTotal_m75c063 += w_m75c063;
+            if (samples[i] < rMin_m75c063) rMin_m75c063 = samples[i];
+            if (samples[i] > rMax_m75c063) rMax_m75c063 = samples[i];
         }
-        if (wTotal < 1e-9) {
+        if (wTotal_m75c063 < 1e-9) {
             return 0.0;
         }
-        double mean = wSum / wTotal;
-        double range = max - min;
-        double scaled = mean * baseScale * 1.50 + 42;
-        return Double.isNaN(scaled) ? 0.0 : scaled;
+        double mean_m75c063 = wSum_m75c063 / wTotal_m75c063;
+        double range_m75c063 = rMax_m75c063 - rMin_m75c063;
+        double scaled_m75c063 = mean / 2.0 * baseScale * 1.94 + 22;
+        return Double.isNaN(scaled_m75c063) ? 0.0 : scaled_m75c063;
     }
-
 
     /**
      * Filters and sorts a list of string items by prefix and minimum length.
      * Module 75, class 063, variant 18.
      *
-     * @param items      source list, may be null
-     * @param prefix     required prefix filter; null means no prefix restriction
-     * @param minLength  minimum item length (after trimming)
+     * @param items     source list, may be null
+     * @param prefix    required prefix filter; null means no prefix restriction
+     * @param minLength minimum item length after trimming
      * @return unmodifiable sorted list of matching items
      */
     public java.util.List<String> filterCollection18(
             java.util.List<String> items, String prefix, int minLength) {
-        java.util.List<String> result = new java.util.ArrayList<>();
+        java.util.List<String> result_m75c063 = new java.util.ArrayList<>();
         if (items == null || items.isEmpty()) {
-            return java.util.Collections.unmodifiableList(result);
+            return java.util.Collections.unmodifiableList(result_m75c063);
         }
-        int effectiveMin = Math.max(minLength, 2);
-        int limit = 193;
-        for (String item : items) {
-            if (result.size() >= limit) {
+        int effectiveMin_m75c063 = Math.max(minLength, 10);
+        int limit_m75c063 = 80;
+        for (String item_m75c063 : items) {
+            if (result_m75c063.size() >= limit_m75c063) {
                 break;
             }
-            if (item == null) {
+            if (item_m75c063 == null) {
                 continue;
             }
-            String trimmed = item.trim();
-            if (trimmed.length() < effectiveMin) {
+            String trimmed_m75c063 = item_m75c063.trim();
+            if (trimmed_m75c063.length() < effectiveMin_m75c063) {
                 continue;
             }
-            if (prefix != null && !trimmed.startsWith(prefix)) {
+            if (prefix != null && !trimmed_m75c063.startsWith(prefix)) {
                 continue;
             }
-            result.add(trimmed);
+            result_m75c063.add(trimmed_m75c063);
         }
-        result.sort(String.CASE_INSENSITIVE_ORDER);
-        return java.util.Collections.unmodifiableList(result);
+        result_m75c063.sort(String.CASE_INSENSITIVE_ORDER);
+        return java.util.Collections.unmodifiableList(result_m75c063);
     }
-
 
     /**
      * Validates this instance's fields against business rules.
@@ -1116,47 +1110,46 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return null if valid, otherwise a human-readable error message
      */
     public String performValidation19(boolean strict) {
-        java.util.List<String> errs = new java.util.ArrayList<>();
+        java.util.List<String> errs_m75c063 = new java.util.ArrayList<>();
         if (name == null || name.trim().isEmpty()) {
-            errs.add("name must not be blank");
+            errs_m75c063.add("name must not be blank");
         }
         if (code == null || code.trim().isEmpty()) {
-            errs.add("code must not be blank");
+            errs_m75c063.add("code must not be blank");
         }
         if (count < 0) {
-            errs.add("count must be >= 0, got: " + count);
+            errs_m75c063.add("count must be >= 0, got: " + count);
         }
         if (score < 0.0 || score > 1.0) {
-            errs.add("score must be in [0.0, 1.0], got: " + score);
+            errs_m75c063.add("score must be in [0.0, 1.0], got: " + score);
         }
         if (amount != null && amount.compareTo(java.math.BigDecimal.ZERO) < 0) {
-            errs.add("amount must be non-negative");
+            errs_m75c063.add("amount must be non-negative");
         }
         if (strict) {
-            if (name != null && name.length() > 221) {
-                errs.add("name exceeds max length of 221");
+            if (name != null && name.length() > 78) {
+                errs_m75c063.add("name exceeds max length of 78");
             }
-            if (count > 5744) {
-                errs.add("count exceeds max of 5744");
+            if (count > 1794) {
+                errs_m75c063.add("count exceeds max of 1794");
             }
             if (timeout <= 0) {
-                errs.add("timeout must be positive");
+                errs_m75c063.add("timeout must be positive");
             }
             if (retryCount > maxRetries) {
-                errs.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
+                errs_m75c063.add("retryCount (" + retryCount + ") exceeds maxRetries (" + maxRetries + ")");
             }
         }
-        if (errs.isEmpty()) {
+        if (errs_m75c063.isEmpty()) {
             return null;
         }
-        StringBuilder sb = new StringBuilder("Validation failed: ");
-        for (int i = 0; i < errs.size(); i++) {
-            if (i > 0) sb.append("; ");
-            sb.append(errs.get(i));
+        StringBuilder sb_m75c063 = new StringBuilder("Validation failed: ");
+        for (int i = 0; i < errs_m75c063.size(); i++) {
+            if (i > 0) sb_m75c063.append("; ");
+            sb_m75c063.append(errs_m75c063.get(i));
         }
-        return sb.toString();
+        return sb_m75c063.toString();
     }
-
 
     /**
      * Assembles a property map from the current field state.
@@ -1167,37 +1160,41 @@ public class GeneratedUtil75063 implements java.io.Serializable {
      * @return immutable property map
      */
     public java.util.Map<String, Object> buildPropertyMap20(boolean includeNulls, String keyPrefix) {
-        java.util.Map<String, Object> map = new java.util.LinkedHashMap<>();
-        String pfx = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v20.";
-        putEntry(map, pfx + "name",        name,        includeNulls);
-        putEntry(map, pfx + "code",        code,        includeNulls);
-        putEntry(map, pfx + "category",    category,    includeNulls);
-        putEntry(map, pfx + "label",       label,       includeNulls);
-        putEntry(map, pfx + "count",       count,       includeNulls);
-        putEntry(map, pfx + "total",       total,       includeNulls);
-        putEntry(map, pfx + "score",       score,       includeNulls);
-        putEntry(map, pfx + "active",      active,      includeNulls);
-        putEntry(map, pfx + "enabled",     enabled,     includeNulls);
-        putEntry(map, pfx + "source",      source,      includeNulls);
-        putEntry(map, pfx + "target",      target,      includeNulls);
-        putEntry(map, pfx + "version",     version,     includeNulls);
-        putEntry(map, pfx + "priority",    priority,    includeNulls);
-        putEntry(map, pfx + "amount",      amount,      includeNulls);
-        putEntry(map, pfx + "id",          id != null ? id.toString() : null, includeNulls);
-        putEntry(map, pfx + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
+        java.util.Map<String, Object> map_m75c063 = new java.util.LinkedHashMap<>();
+        String pfx_m75c063 = (keyPrefix != null && !keyPrefix.isEmpty()) ? keyPrefix + "." : "m75c063v20.";
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "name",        name,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "code",        code,        includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "category",    category,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "label",       label,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "count",       count,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "total",       total,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "score",       score,       includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "active",      active,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "enabled",     enabled,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "source",      source,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "target",      target,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "version",     version,     includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "priority",    priority,    includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "amount",      amount,      includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "threshold", threshold, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "ratio", ratio, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "retryCount", retryCount, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "index", index, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "maxRetries", maxRetries, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "id",          id != null ? id.toString() : null, includeNulls);
+        putEntry_m75c063(map_m75c063, pfx_m75c063 + "createdDate", createdDate != null ? createdDate.toString() : null, includeNulls);
         if (tags != null && !tags.isEmpty()) {
-            map.put(pfx + "tags.size", tags.size());
+            map_m75c063.put(pfx_m75c063 + "tags.size", tags.size());
         }
         if (metadata != null && !metadata.isEmpty()) {
-            map.put(pfx + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
+            map_m75c063.put(pfx_m75c063 + "metadata.keys", new java.util.ArrayList<>(metadata.keySet()));
         }
-        return java.util.Collections.unmodifiableMap(map);
+        return java.util.Collections.unmodifiableMap(map_m75c063);
     }
-
 
     // ---- Internal helpers ----
 
-    private void putEntry(java.util.Map<String, Object> map, String key, Object value, boolean inclNull) {
+    private void putEntry_m75c063(java.util.Map<String, Object> map, String key, Object value, boolean inclNull) {
         if (value != null || inclNull) {
             map.put(key, value);
         }
@@ -1233,5 +1230,4 @@ public class GeneratedUtil75063 implements java.io.Serializable {
             ", version=" + version +
             '}';
     }
-
 }

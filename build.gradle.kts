@@ -29,6 +29,8 @@ sonarqube {
         property("sonar.projectKey", "gradle-baddie1")
         property("sonar.organization", "joetest1")
         property("sonar.host.url", "https://dev5.sc-dev5.io")
+        property("sonar.scanner.sonarcloudUrl", "https://dev5.sc-dev5.io")
+        property("sonar.scanner.apiBaseUrl", "https://api.sc-dev5.io")
         property("sonar.sourceEncoding", "UTF-8")
     }
 }
